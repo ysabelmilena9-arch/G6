@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingeniería Económica</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+rgba(0,0,0,0.70),
+rgba(0,0,0,0.70)
+),
+url("fondo.jpg");
+
+background-size:cover;
+background-position:center;
+
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+overflow:hidden;
+}
+
+/* ZOOM DEL FONDO */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+background:url("fondo.jpg");
+
+background-size:cover;
+background-position:center;
+
+z-index:-1;
+
+animation:zoom 20s infinite alternate;
+}
+
+@keyframes zoom{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.15);
+}
+
+}
+
+.tarjeta{
+
+background:rgba(255,255,255,.10);
+
+backdrop-filter:blur(12px);
+
+padding:40px;
+
+width:850px;
+
+max-width:90%;
+
+border-radius:25px;
+
+text-align:center;
+
+box-shadow:0 0 25px rgba(0,0,0,.5);
+
+animation:entrada 1.5s;
+}
+
+@keyframes entrada{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.logo{
+
+width:140px;
+
+border-radius:50%;
+
+background:white;
+
+padding:8px;
+
+margin-bottom:20px;
+
+animation:flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.universidad{
+
+color:white;
+
+font-size:28px;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+letter-spacing:2px;
+}
+
+.carrera{
+
+color:#d1fae5;
+
+font-size:18px;
+
+margin-bottom:40px;
+}
+
+.materia{
+
+font-size:90px;
+
+font-weight:900;
+
+line-height:1;
+
+color:white;
+
+text-shadow:0 0 20px rgba(255,255,255,.3);
+
+animation:aparecer 2s;
+}
+
+@keyframes aparecer{
+
+from{
+opacity:0;
+transform:scale(.8);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+.boton{
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:18px 45px;
+
+background:#10b981;
+
+color:white;
+
+text-decoration:none;
+
+font-size:20px;
+
+font-weight:bold;
+
+border-radius:50px;
+
+transition:.3s;
+}
+
+.boton:hover{
+
+background:#34d399;
+
+transform:scale(1.05);
+}
+
+@media(max-width:768px){
+
+.materia{
+font-size:55px;
+}
+
+.universidad{
+font-size:20px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="tarjeta">
+
+<img src="logo.jpg" class="logo">
+
+<div class="universidad">
+UNIVERSIDAD AGRARIA DEL ECUADOR
+</div>
+
+<div class="carrera">
+CIENCIAS DE LA COMPUTACIÓN • MODALIDAD EN LÍNEA
+</div>
+
+<div class="materia">
+INGENIERÍA<br>
+ECONÓMICA
+</div>
+
+<a href="contenido.html" class="boton">
+INICIAR PROYECTO
+</a>
+
+</div>
+
+</body>
+</html>

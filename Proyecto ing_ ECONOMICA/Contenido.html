@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE - Contenido de Ingeniería Económica</title>
+    <!-- Fuente elegante para el texto UAE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        /* FRANJA SUPERIOR */
+        .header-top {
+            background: #0f172a;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* LOGO MÁS GRANDE */
+        .header-brand img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+
+        /* LETRAS ELEGANTES PARA UAE */
+        .header-brand span {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #facc15;
+            text-shadow: 0 2px 8px rgba(250, 204, 21, 0.4);
+        }
+
+        /* BOTÓN MENÚ HAMBURGUESA PRINCIPAL */
+        .hamburger-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 32px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger-btn span {
+            width: 100%;
+            height: 4px;
+            background-color: #facc15;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        /* MENÚ DESPLEGABLE TIPO HAMBURGUESA */
+        .nav-menu-container {
+            display: none;
+            background: #065f46;
+            width: 100%;
+            position: fixed;
+            top: 85px;
+            left: 0;
+            z-index: 999;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #facc15;
+        }
+
+        .nav-menu-container.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 10px 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-links li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background: #044e39;
+            color: #facc15;
+            padding-left: 40px;
+        }
+
+        .nav-links li a.btn-salir {
+            color: #fca5a5;
+            background: rgba(220, 38, 38, 0.15);
+        }
+
+        .nav-links li a.btn-salir:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* TÍTULO PRINCIPAL */
+        .titulo-seccion {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .titulo-seccion h1 {
+            color: #065f46;
+            font-size: 46px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* BANNER IMAGEN GRAFICO.JPG */
+        .banner-container {
+            max-width: 1100px;
+            margin: 10px auto 30px;
+            padding: 0 20px;
+        }
+
+        .imagen-principal {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        /* SECCIONES DE CONTENIDO EDUCATIVO */
+        .contenido {
+            max-width: 1100px;
+            margin: auto;
+            padding: 10px 20px 40px;
+        }
+
+        .seccion-card {
+            background: white;
+            padding: 32px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            border-left: 6px solid #065f46;
+        }
+
+        .seccion-card h2 {
+            color: #065f46;
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+
+        .seccion-card p {
+            line-height: 1.7;
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .badge-unidad {
+            display: inline-block;
+            background: #e6f4ea;
+            color: #065f46;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 15px;
+            margin-bottom: 12px;
+        }
+
+        .lista-puntos {
+            margin-left: 20px;
+            color: #475569;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* PIE DE PÁGINA (FOOTER) */
+        .footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+            object-fit: cover;
+        }
+
+        .footer-text h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .footer-text p {
+            margin-top: 3px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .footer-info {
+            color: #cbd5e1;
+            font-size: 13px;
+            border-top: 1px solid #334155;
+            padding-top: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .header-brand span {
+                font-size: 26px;
+            }
+
+            .header-brand img {
+                width: 45px;
+                height: 45px;
+            }
+
+            .titulo-seccion h1 {
+                font-size: 32px;
+            }
+
+            .imagen-principal {
+                height: 220px;
+            }
+
+            .nav-menu-container {
+                top: 75px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FRANJA SUPERIOR CON UAE Y BOTÓN HAMBURGUESA -->
+    <div class="header-top">
+        <div class="header-brand">
+            <img src="logo.jpg" alt="Logo UAE">
+            <span>UAE</span>
+        </div>
+        
+        <!-- Botón de Menú Hamburguesa -->
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- CONTENEDOR DEL MENÚ HAMBURGUESA DESPLEGABLE -->
+    <nav class="nav-menu-container" id="nav-menu-container">
+        <ul class="nav-links">
+            <li><a href="Contenido.html" class="active">Contenido</a></li>
+            <li><a href="#quees">¿Qué es?</a></li>
+            <li><a href="#importancia">Importancia</a></li>
+            <li><a href="#aplicacion">Aplicación en Sistemas</a></li>
+            <li><a href="#interes">Interés Simple</a></li>
+            <li><a href="Formula.html">Fórmulas</a></li>
+            <li><a href="Ejercicios.html">Ejercicios Resueltos</a></li>
+            <li><a href="Integrantes.html">Integrantes</a></li>
+            <li><a href="index.html" class="btn-salir">Salir ✕</a></li>
+        </ul>
+    </nav>
+
+    <!-- TÍTULO DE LA PÁGINA -->
+    <div class="titulo-seccion">
+        <h1>INGENIERÍA ECONÓMICA</h1>
+    </div>
+
+    <!-- IMAGEN GRAFICO.JPG -->
+    <div class="banner-container">
+        <img src="grafico.jpg" class="imagen-principal" alt="Gráfico de Economía">
+    </div>
+
+    <!-- CONTENIDO EDUCATIVO -->
+    <div class="contenido">
+
+        <div class="seccion-card" id="quees">
+            <span class="badge-unidad">Unidad I — Fundamentos</span>
+            <h2>¿Qué es la Ingeniería Económica?</h2>
+            <p>
+                La Ingeniería Económica permite comparar alternativas de inversión y proyectos de ingeniería considerando el valor del dinero en el tiempo, los costos, los beneficios y el rendimiento esperado.
+            </p>
+            <p>
+                Su aplicación facilita la elección de opciones que aprovechen mejor los recursos disponibles y contribuyan a tomar decisiones económicamente fundamentadas.
+            </p>
+        </div>
+
+        <div class="seccion-card" id="importancia">
+            <span class="badge-unidad">Toma de Decisiones</span>
+            <h2>Importancia</h2>
+            <p>
+                La necesidad de la ingeniería económica se encuentra motivada principalmente por el trabajo que llevan a cabo los ingenieros al analizar, sintetizar y obtener conclusiones en proyectos de cualquier envergadura.
+            </p>
+            <p>
+                En otras palabras, la ingeniería económica es un punto medular en la toma de decisiones que implican flujos de efectivo, tiempo y tasas de interés.
+            </p>
+        </div>
+
+        <div class="seccion-card" id="aplicacion">
+            <span class="badge-unidad">Área Tecnológica</span>
+            <h2>Aplicación en Ciencias de la Computación</h2>
+            <p>
+                Ayuda a estudiantes de computación y desarrolladores a decidir si una solución tecnológica conviene considerando sus costos, beneficios y duración, además de su viabilidad técnica.
+            </p>
+            <p>Permite evaluar:</p>
+            <ul class="lista-puntos">
+                <li><strong>Costo inicial:</strong> desarrollo, equipos, licencias e implementación.</li>
+                <li><strong>Costos de operación:</strong> servicios en la nube, mantenimiento y soporte.</li>
+                <li><strong>Beneficios esperados:</strong> ahorro de tiempo, precisión y automatización.</li>
+                <li><strong>Riesgos:</strong> cambios tecnológicos, seguridad y obsolescencia.</li>
+            </ul>
+        </div>
+
+        <div class="seccion-card" id="interes">
+            <span class="badge-unidad">Conceptos Financieros</span>
+            <h2>Interés Simple</h2>
+            <p>
+                En el interés simple, el capital que genera dicho interés permanece constante a lo largo del tiempo que dura la operación.
+            </p>
+            <p>
+                Depende de tres elementos clave:
+            </p>
+            <ul class="lista-puntos">
+                <li><strong>Capital ($C$ o $P$):</strong> Dinero prestado o invertido inicialmente.</li>
+                <li><strong>Tasa de interés ($i$):</strong> Porcentaje cobrado por el uso del dinero.</li>
+                <li><strong>Plazo ($n$):</strong> Tiempo durante el cual se presta el capital.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-top">
+            <img src="logo.jpg" class="footer-logo" alt="Logo UAE">
+            <div class="footer-text">
+                <h2>UNIVERSIDAD AGRARIA DEL ECUADOR</h2>
+                <p>Carrera: Ciencias de la Computación - Modalidad en Línea</p>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <p>Asignatura: Ingeniería Económica</p>
+            <p>Período Académico 2026 - 2027</p>
+        </div>
+    </div>
+
+    <!-- SCRIPT DEL MENÚ HAMBURGUESA -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenuContainer = document.getElementById('nav-menu-container');
+
+        // Abrir y cerrar el menú al presionar el icono de hamburguesa
+        hamburgerBtn.addEventListener('click', () => {
+            navMenuContainer.classList.toggle('active');
+        });
+
+        // Cerrar menú desplegable al hacer clic en cualquiera de las opciones
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenuContainer.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
